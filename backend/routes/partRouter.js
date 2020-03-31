@@ -2,12 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/:part_id', (req, res, next) => {
-    res.status(200).json({message: `List info about part with ID: ${req.params.part_id} `});
+const partService = require('../services/partService');
+
+router.get('/', (req, res) => {
+    partService.fetchParts({}, (parts) => {
+        res.status(200).send(parts);
+    })
 });
 
-router.post('/order/:part_id', (req, res, next) => {
-   res.status(200).json({message: `Order part with ID: ${req.params.part_id}`});
+router.get('/:part_id', (req, res) => {
+    partService.fetchParts({part_id: req.params['part_id']}, (part) => {
+        res.status(200).send(part);
+    })
 });
 
 module.exports = router;
