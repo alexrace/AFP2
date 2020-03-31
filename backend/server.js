@@ -1,18 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
-const userRouter = require('./routes/userRouter');
-const productRouter = require('./routes/productRouter');
-const partRouter = require('./routes/partRouter');
+var userRouter = require('./routes/userRouter');
+var productRouter = require('./routes/productRouter');
+var partRouter = require('./routes/partRouter');
 
-const app = express();
+var app = express();
 const port = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-    res.send("It's working!")
-});
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
