@@ -1,19 +1,18 @@
+const mysql = require('mysql');
+const dbConfig = require('../db/db.config');
+
 class productDAO{
     constructor(){
-        this.database = [
-            {
-                id: 1,
-                name: "Valami",
-                qty: 5,
-                price: 150
-            },
-            {
-            id: 2,
-            name: "Valami 2",
-            qty: 10,
-            price: 300
-            }
-        ];
+        this.connection = mysql.createConnection({
+            host: dbConfig.HOST,
+            user: dbConfig.USER,
+            password: dbConfig.PASSWORD,
+            database: dbConfig.DB
+        });
+
+        this.connection.connect((err) => {
+            if(err) throw err;
+        });
     }
 
     create(product, success, error){
@@ -21,11 +20,14 @@ class productDAO{
     }
 
     read(callback){
-        callback(this.database);
+        this.connection.query("SELECT * FROM products", (err, result) => {
+            if(err) throw err;
+            callback(result);
+        })
     }
 
     update(book, success, error){
-
+        
     }
 
     delete(book, success, error){
