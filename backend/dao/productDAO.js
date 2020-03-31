@@ -26,11 +26,11 @@ class productDAO{
         })
     }
 
-    update(book, success, error){
+    update(product, success, error){
         
     }
 
-    delete(book, success, error){
+    delete(product, success, error){
 
     }
 }
