@@ -2,25 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.status(200).json({message: "List all product"});
+const productService = require('../services/productService');
+
+router.get('/', (req, res) => {
+    productService.fetchProducts({}, (products) => {
+        res.status(200).send(products);
+    })
 });
 
-router.get('/:product_id', (req, res, next) => {
-    res.status(200).json({message: `List info about product with ID: ${req.params.product_id}`});
-});
-
-router.post('/create', (req, res, next) => {
-    res.status(200).json({message: "Create product"});
-});
-
-
-router.post('/sell/:product_id', (req, res, next) => {
-   res.status(200).json({message: `Sell product with ID: ${req.params.product_id}`});
-});
-
-router.delete('/:product_id', (req, res, next) => {
-    res.status(200).json({message: `Delete product with ID: ${req.params.product_id}`});
+router.get('/:product_id', (req, res) => {
+    productService.fetchProducts({product_id: req.params['product_id']}, (product) => {
+        res.status(200).send(product);
+    })
 });
 
 module.exports = router;
