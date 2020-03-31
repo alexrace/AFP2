@@ -5,7 +5,7 @@ class productService{
         productDAO.read((products) => {
             if(queryOptions['product_id'] != undefined){
                 callback(products.filter((product) => {
-                    return product.id == queryOptions['product_id'];
+                    return product.product_id == queryOptions['product_id'];
                 }));
             }else{
                 callback(products);
