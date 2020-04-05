@@ -15,8 +15,8 @@ class productDAO{
         });
     }
 
-    create(product, success, error){
-
+    create(product, callback){
+        
     }
 
     read(callback){
