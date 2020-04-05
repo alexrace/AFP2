@@ -10,7 +10,7 @@ router.get('/:product_id', productController.fetchOne);
 
 router.post('/create', productController.createProduct);
 
-router.patch('/:product_id', productController.updateProduct);
+router.put('/:product_id', productController.updateProduct);
 
 router.delete('/delete/:product_id', productController.deleteProduct);
 
