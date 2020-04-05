@@ -12,6 +12,10 @@ class productService{
             }
         });
     }
+
+    createProduct(queryOptions, callback){
+
+    }
 }
 
 module.exports = new productService();
