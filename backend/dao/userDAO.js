@@ -16,7 +16,13 @@ class userDAO{
     }
 
     create(user, success, error){
-
+        this.connection.query("INSERT INTO users SET ?", user, (err, result) => {
+           if(err){
+               return error(err);
+           }else{
+               return success(result);
+           }
+        });
     }
 
     read(callback){
