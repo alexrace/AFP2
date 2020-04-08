@@ -31,7 +31,11 @@ class partDAO{
     }
 
     delete(part, success, error){
-
+        var sql= "DELETE FROM parts WHERE id=?"
+        con.query(sql,function(){
+            if(error) throw error;
+            else {console.log('Sikeres törlés: '+success.affectedRows);}
+        })
     }
 }
 
