@@ -30,11 +30,14 @@ class partDAO{
         
     }
 
-    delete(part, success, error){
-        var sql= "DELETE FROM parts WHERE id=?"
-        con.query(sql,function(){
+    delete(part_id, success, error){
+        var sql= "DELETE FROM parts WHERE part_id=?";
+        this.connection.query(sql,[part_id],function(error,result){
             if(error) throw error;
-            else {console.log('Sikeres törlés: '+success.affectedRows);}
+            else 
+            {
+                console.log('Sikeres törlés: '+result.affectedRows);
+            }
         })
     }
 }
