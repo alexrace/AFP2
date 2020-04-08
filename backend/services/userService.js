@@ -12,6 +12,16 @@ class userService{
             }
         });
     }
+
+    registerUser(queryOptions, callback){
+        if(queryOptions['user'] != undefined){
+            userDAO.create(queryOptions['user'], () => {
+                callback({"status": 200, description: "User sikeresen létrehozva!"});
+            }, (err) => {
+                callback({"status": 400, description: "User létrehozása sikertelen!"});
+            });
+        }
+    }
 }
 
 module.exports = new userService();
