@@ -13,13 +13,39 @@ class productService{
         });
     }
 
-    createProduct(queryOptions, callback){
-        if(queryOptions['product'] != undefined){
-            productDAO.create(queryOptions['product'], (err) => {
-                callback({status: 400, description: "Hiba a product létrehozása közben!"});
+    createProduct(product, callback){
+        if(product != undefined){
+            productDAO.create(product, (err) => {
+                callback({status: 400, description: `Hiba a product létrehozása közben: ${err}`});
             }, () => {
                 callback({status: 200, description: "Product sikeresen létrehozva!"});
             })
+        }else{
+            callback({status: 400, description: "Hibás paraméterek!"});
+        }
+    }
+
+    updateProduct(product, callback){
+        if(product != undefined){
+            productDAO.update(product, (err) => {
+                callback({status: 400, description: `Hiba a product frissítése közben: ${err}`});
+            }, () => {
+                callback({status: 200, description: "Product sikeresen frissítve!"});
+            });
+        }else{
+            callback({status: 400, description: "Hibás paraméterek!"});
+        }
+    }
+
+    deleteProduct(product_id, callback){
+        if(product_id != undefined){
+            productDAO.delete(product_id, (err) => {
+                if(err){
+                    callback({status: 400, description: `Hiba a product törlése közben: ${err}`});
+                }
+            }, () => {
+                    callback({status: 200, description: "Product sikeresen törölve!"});
+            });
         }
     }
 }
