@@ -15,8 +15,14 @@ class productDAO{
         });
     }
 
-    create(product, callback){
-        
+    create(product, error, success){
+        this.connection.query("INSERT INTO products SET ?", product, (err, result) => {
+            if(err){
+                error(err);
+            }else{
+                success(result);
+            }
+        });
     }
 
     read(callback){
