@@ -14,7 +14,13 @@ class productService{
     }
 
     createProduct(queryOptions, callback){
-
+        if(queryOptions['product'] != undefined){
+            productDAO.create(queryOptions['product'], (err) => {
+                callback({status: 400, description: "Hiba a product létrehozása közben!"});
+            }, () => {
+                callback({status: 200, description: "Product sikeresen létrehozva!"});
+            })
+        }
     }
 }
 
