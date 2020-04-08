@@ -13,7 +13,13 @@ exports.fetchOne = (req, res) => {
 }
 
 exports.createProduct = (req, res) => {
-
+    productService.createProduct({product: req.body}, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    })
 }
 
 exports.updateProduct = (req, res) => {
