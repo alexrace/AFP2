@@ -31,7 +31,7 @@ class userDAO{
     }
 
     delete(user_id, success, error){
-        var sql= "DELETE FROM users WHERE user_id=?"
+        var sql= "DELETE FROM users WHERE user_id=?";
         this.connection.query(sql,[user_id],function(error,result){
             if(error) throw error;
             else 

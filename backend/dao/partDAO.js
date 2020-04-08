@@ -31,7 +31,7 @@ class partDAO{
     }
 
     delete(part_id, success, error){
-        var sql= "DELETE FROM parts WHERE part_id=?"
+        var sql= "DELETE FROM parts WHERE part_id=?";
         this.connection.query(sql,[part_id],function(error,result){
             if(error) throw error;
             else 

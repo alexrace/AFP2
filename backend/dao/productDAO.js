@@ -31,7 +31,7 @@ class productDAO{
     }
 
     delete(product_id, success, error){
-        var sql= "DELETE FROM products WHERE product_id=?"
+        var sql= "DELETE FROM products WHERE product_id=?";
         this.connection.query(sql,[product_id],function(error,result){
             if(error) throw error;
             else 
