@@ -18,9 +18,9 @@ class productDAO{
     create(product, error, success){
         this.connection.query("INSERT INTO products SET ?", product, (err, result) => {
             if(err){
-                error(err);
+                error(err.message);
             }else{
-                success(result);
+                success();
             }
         });
     }
@@ -32,17 +32,23 @@ class productDAO{
         })
     }
 
-    update(product, success, error){
-        
+    update(product, error, success){
+        this.connection.query("UPDATE products SET ? WHERE product_id = ?", [product, product.product_id], (err, result) => {
+            if(err){
+                error(err.message);
+            }else{
+                success();
+            }
+        })
     }
 
-    delete(product_id, success, error){
-        var sql= "DELETE FROM products WHERE product_id=?";
-        this.connection.query(sql,[product_id],function(error,result){
-            if(error) throw error;
-            else 
-            {
-                console.log('Sikeres törlés: '+result.affectedRows);
+    delete(product_id, error, success){
+        this.connection.query("DELETE FROM products WHERE product_id = ?", product_id,(err,result) => {
+            if(err){
+                error(err.message);
+            }
+            else {
+                success();
             }
         })
     }
