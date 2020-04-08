@@ -23,9 +23,21 @@ exports.createProduct = (req, res) => {
 }
 
 exports.updateProduct = (req, res) => {
-
+    productService.updateProduct({product: req.body}, (result) => {
+       if(result.status == 200){
+           return res.status(200).json(result);
+       }else{
+           return res.status(400).json(result);
+       }
+    });
 }
 
 exports.deleteProduct = (req, res) => {
-    
+    productService.deleteProduct(req.params['product_id'], (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    });
 }
