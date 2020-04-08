@@ -30,11 +30,14 @@ class userDAO{
         
     }
 
-    delete(part, success, error){
-        var sql= "DELETE FROM users WHERE id=?"
-        con.query(sql,function(){
+    delete(user_id, success, error){
+        var sql= "DELETE FROM users WHERE user_id=?"
+        this.connection.query(sql,[user_id],function(error,result){
             if(error) throw error;
-            else {console.log('Sikeres törlés: '+success.affectedRows);}
+            else 
+            {
+                console.log('Sikeres törlés: '+result.affectedRows);
+            }
         })
     }
 }
