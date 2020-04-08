@@ -30,8 +30,12 @@ class productDAO{
         
     }
 
-    delete(product, success, error){
-
+    delete(part, success, error){
+        var sql= "DELETE FROM products WHERE id=?"
+        con.query(sql,function(){
+            if(error) throw error;
+            else {console.log('Sikeres törlés: '+success.affectedRows);}
+        })
     }
 }
 
