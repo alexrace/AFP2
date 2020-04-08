@@ -2,30 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-const userService = require('../services/userService');
+const userController = require('../controllers/userController');
 
-router.post('/login', (req, res, next) => {
-   res.status(200).json({message: "User login"});
-});
+router.post('/login', userController.loginUser);
 
-router.post('/signup', (req, res, next) => {
-    res.status(200).json({message: "User signup"});
-});
+router.post('/signup', userController.registerUser);
 
-router.get('/logout', (req, res, next) => {
-    res.status(200).json({message: "User logout"});
-});
+router.get('/logout', userController.logoutUser);
 
-router.get('/', (req, res, next) => {
-    userService.fetchUsers({}, (users) => {
-        res.status(200).send(users);
-    });
-});
+router.get('/', userController.fetchAll);
 
-router.get('/:user_id', (req, res, next) => {
-    userService.fetchUsers({user_id: req.params['user_id']}, (user) => {
-        res.status(200).send(user);
-    });
-});
+router.get('/:user_id', userController.fetchOne);
 
 module.exports = router;
