@@ -20,7 +20,7 @@ class userDAO{
            if(err){
                return error(err);
            }else{
-               return success(result);
+               return success();
            }
         });
     }
