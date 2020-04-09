@@ -16,7 +16,16 @@ class partDAO{
     }
 
     create(part, success, error){
-
+        this.connection.query("INSERT INTO parts SET ?", part, (err, result) => {
+            if(err)
+            {
+                error(err.message);
+            }
+            else
+            {
+                success();
+            }
+        });
     }
 
     read(callback){
