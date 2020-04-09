@@ -23,7 +23,7 @@ class partDAO{
             }
             else
             {
-                Console.log(result.affectedRows + " record(s) inserted");
+                success();
             }
         });
     }
@@ -43,7 +43,7 @@ class partDAO{
             }
             else
             {
-                console.log(result.affectedRows + " record(s) updated");
+                success();
             }
         })
     }
@@ -56,8 +56,7 @@ class partDAO{
             }
             else 
             {
-                console.log('Sikeres törlés: '+result.affectedRows);
-                
+                success();
             }
         })
     }
