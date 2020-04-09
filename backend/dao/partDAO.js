@@ -36,7 +36,7 @@ class partDAO{
     }
 
     update(part, success, error){
-        this.connection.query("UPDATE parts SET ? WHERE product_id = ?", [part, part.part_id], (err, result) => {
+        this.connection.query("UPDATE parts SET ? WHERE part_id = ?", [part, part.part_id], (err, result) => {
             if(err)
             {
                 error(err.message);
@@ -49,12 +49,15 @@ class partDAO{
     }
 
     delete(part_id, success, error){
-        var sql= "DELETE FROM parts WHERE part_id=?";
-        this.connection.query(sql,[part_id],function(error,result){
-            if(error) throw error;
+        this.connection.query("DELETE FROM parts WHERE part_id = ?", part_id,(err,result) => {
+            if(err)
+            {
+                error(err.message);
+            }
             else 
             {
                 console.log('Sikeres törlés: '+result.affectedRows);
+                
             }
         })
     }
