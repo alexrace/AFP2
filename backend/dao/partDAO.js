@@ -23,7 +23,7 @@ class partDAO{
             }
             else
             {
-                success();
+                Console.log(result.affectedRows + " record(s) inserted");
             }
         });
     }
@@ -36,7 +36,16 @@ class partDAO{
     }
 
     update(part, success, error){
-        
+        this.connection.query("UPDATE parts SET ? WHERE product_id = ?", [part, part.part_id], (err, result) => {
+            if(err)
+            {
+                error(err.message);
+            }
+            else
+            {
+                console.log(result.affectedRows + " record(s) updated");
+            }
+        })
     }
 
     delete(part_id, success, error){
