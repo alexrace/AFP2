@@ -46,12 +46,14 @@ class userDAO{
     }
 
     delete(user_id, success, error){
-        var sql= "DELETE FROM users WHERE user_id=?";
-        this.connection.query(sql,[user_id],function(error,result){
-            if(error) throw error;
+        this.connection.query("DELETE FROM users WHERE user_id = ?", user_id,(err,result) => {
+            if(err)
+            {
+                error(err.message);
+            }
             else 
             {
-                console.log('Sikeres törlés: '+result.affectedRows);
+                success();
             }
         })
     }
