@@ -13,7 +13,7 @@ exports.fetchOne = (req, res) => {
 }
 
 exports.createPart = (req, res) => {
-    partService.createPart({part: req.body}, (result) => {
+    partService.createPart(req.body, (result) => {
         if(result.status == 200){
             res.status(200).json(result);
         }else{
@@ -23,7 +23,7 @@ exports.createPart = (req, res) => {
 }
 
 exports.updatePart = (req, res) => {
-    partService.updatePart({part: req.body}, (result) => {
+    partService.updatePart(req.body, (result) => {
        if(result.status == 200){
            res.status(200).json(result);
        }else{
@@ -33,7 +33,7 @@ exports.updatePart = (req, res) => {
 }
 
 exports.deletePart = (req, res) => {
-    partService.deletePart({part_id: req.params['part_id']}, (result) => {
+    partService.deletePart(req.params['part_id'], (result) => {
         if(result.status == 200){
             res.status(200).json(result);
         }else{
