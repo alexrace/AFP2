@@ -12,6 +12,36 @@ class partService{
             }
         });
     }
+
+    createPart(part, callback){
+        if(part != undefined){
+            partDAO.create(part, () => {
+                callback({status: 200, description: 'Part sikeresen létrehozva!'});
+            }, (err) => {
+                callback({status: 400, description: `Hiba a part létrehozása közben: ${err}`});
+            });
+        }
+    }
+
+    updatePart(part, callback){
+        if(part != undefined){
+            partDAO.update(part, () => {
+                callback({status: 200, description: 'Part sikeresen frissítve!'});
+            }, (err) => {
+                callback({status: 400, description: `Hiba a part frissítése közben: ${err}`});
+            });
+        }
+    }
+
+    deletePart(part_id, callback){
+        if(part_id != undefined){
+            partDAO.delete(part_id, () => {
+                callback({status: 200, description: 'Part sikeresen törölve!'});
+            }, (err) => {
+                callback({status: 400, description: `Hiba a part törlése közben: ${err}`});
+            });
+        }
+    }
 }
 
 module.exports = new partService();
