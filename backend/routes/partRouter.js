@@ -8,10 +8,10 @@ router.get('/', partController.fetchAll);
 
 router.get('/:part_id', partController.fetchOne);
 
-router.post('/create', partController.createProduct);
+router.post('/create', partController.createPart);
 
-router.put('/:part_id', partController.updateProduct);
+router.put('/:part_id', partController.updatePart);
 
-router.delete('/delete/:part_id', partController.deleteProduct);
+router.delete('/delete/:part_id', partController.deletePart);
 
 module.exports = router;

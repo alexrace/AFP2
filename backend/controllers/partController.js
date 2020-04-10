@@ -1,0 +1,43 @@
+const partService = require('../services/partService');
+
+exports.fetchAll = (req, res) => {
+    partService.fetchParts({}, (parts) => {
+       res.status(200).json(parts);
+    });
+}
+
+exports.fetchOne = (req, res) => {
+    partService.fetchParts({part_id: req.params['part_id']}, (part) => {
+       res.status(200).json(part);
+    });
+}
+
+exports.createPart = (req, res) => {
+    partService.createPart({part: req.body}, (result) => {
+        if(result.status == 200){
+            res.status(200).json(result);
+        }else{
+            res.status(400).json(result);
+        }
+    });
+}
+
+exports.updatePart = (req, res) => {
+    partService.updatePart({part: req.body}, (result) => {
+       if(result.status == 200){
+           res.status(200).json(result);
+       }else{
+           res.status(400).json(result);
+       }
+    });
+}
+
+exports.deletePart = (req, res) => {
+    partService.deletePart({part_id: req.params['part_id']}, (result) => {
+        if(result.status == 200){
+            res.status(200).json(result);
+        }else{
+            res.status(400).json(result);
+        }
+    });
+}
