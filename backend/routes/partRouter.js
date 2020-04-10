@@ -2,18 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-const partService = require('../services/partService');
+const partController = require('../controllers/partController');
 
-router.get('/', (req, res) => {
-    partService.fetchParts({}, (parts) => {
-        res.status(200).send(parts);
-    })
-});
+router.get('/', partController.fetchAll);
 
-router.get('/:part_id', (req, res) => {
-    partService.fetchParts({part_id: req.params['part_id']}, (part) => {
-        res.status(200).send(part);
-    })
-});
+router.get('/:part_id', partController.fetchOne);
+
+router.post('/create', partController.createProduct);
+
+router.put('/:part_id', partController.updateProduct);
+
+router.delete('/delete/:part_id', partController.deleteProduct);
 
 module.exports = router;
