@@ -13,7 +13,7 @@ exports.fetchOne = (req, res) => {
 }
 
 exports.createProduct = (req, res) => {
-    productService.createProduct({product: req.body}, (result) => {
+    productService.createProduct(req.body, (result) => {
         if(result.status == 200){
             return res.status(200).json(result);
         }else{
@@ -23,7 +23,7 @@ exports.createProduct = (req, res) => {
 }
 
 exports.updateProduct = (req, res) => {
-    productService.updateProduct({product: req.body}, (result) => {
+    productService.updateProduct(req.body, (result) => {
        if(result.status == 200){
            return res.status(200).json(result);
        }else{
