@@ -13,7 +13,27 @@ exports.fetchOne = (req, res) => {
 }
 
 exports.registerUser = (req, res) => {
-    userService.registerUser({user: req.body}, (result) => {
+    userService.registerUser(req.body, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    });
+}
+
+exports.updateUser = (req, res) => {
+    userService.updateUser(req.body, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    });
+}
+
+exports.deleteUser = (req, res) => {
+    userService.deleteUser(req.params['user_id'], (result) => {
         if(result.status == 200){
             return res.status(200).json(result);
         }else{
@@ -23,9 +43,9 @@ exports.registerUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-
+    res.status(200).json({status: 200, description: "USER LOGIN"});
 }
 
 exports.logoutUser = (req, res) => {
-
+    res.status(200).json({status: 200, description: "USER LOGOUT"});
 }
