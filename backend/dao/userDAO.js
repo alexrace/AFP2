@@ -34,15 +34,12 @@ class userDAO{
 
     update(user, success, error){
         this.connection.query("UPDATE users SET ? WHERE user_id = ?", [user, user.user_id], (err, result) => {
-            if(err)
-            {
-                error(err.message);
-            }
-            else
-            {
-                success();
-            }
-        })
+           if(err){
+               error(err.message);
+           } else{
+               success();
+           }
+        });
     }
 
     delete(user_id, success, error){
