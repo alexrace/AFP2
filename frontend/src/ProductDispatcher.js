@@ -21,6 +21,7 @@ dispatcher.register((payload)=>{
        console.log('Id keresés');
         axios.get('/products').then((resp)=>{
             store._products = resp.data.filter((product)=>{
+                // eslint-disable-next-line 
                 return product.product_id == payload.action.payload.product_id;
             });
             store.emitChange();
