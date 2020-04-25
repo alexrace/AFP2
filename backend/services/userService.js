@@ -22,6 +22,16 @@ class userService{
             });
         }
     }
+
+    authenticateUser(userdata, callback){
+        if(userdata != undefined){
+            userDAO.authenticate(userdata, (err) => {
+                callback({"status": 400, description: `Sikertelen bejelentkezés: ${err}`});
+            }, (user) => {
+                callback({"status": 200, description: "Sikeres bejelentkezés!", user});
+            })
+        }
+    }
 }
 
 module.exports = new userService();
