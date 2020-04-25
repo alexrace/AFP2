@@ -7,6 +7,7 @@ const partController = require('../controllers/partController');
 router.get('/', partController.fetchAll);
 
 router.get('/:part_id', partController.fetchOne);
+router.get('/details/:part_id', partController.fetchDetails);
 
 router.post('/', partController.createPart);
 router.post('/order',partController.orderPart);
