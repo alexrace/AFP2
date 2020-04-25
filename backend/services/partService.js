@@ -42,6 +42,14 @@ class partService{
             });
         }
     }
+
+    orderPart(part_id, part_qty, callback){
+        partDAO.order(part_id, part_qty, () => {
+            callback({status: 200, description: 'Part sikeresen megrendelve!'});
+        }, (err) => {
+            callback({status: 400, description: `Hiba a part rendelése közben: ${err}`});
+        })
+    }
 }
 
 module.exports = new partService();
