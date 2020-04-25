@@ -49,5 +49,15 @@ exports.storeProduct = (req, res) => {
         }else{
             return res.status(400).json(result);
         }
+    });
+}
+
+exports.sellProduct = (req, res) => {
+    productService.sellProduct(req.body.product_id, req.body.qty, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
     })
 }
