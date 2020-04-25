@@ -44,19 +44,23 @@ class partService{
     }
 
     orderPart(part_id, part_qty, callback){
-        partDAO.order(part_id, part_qty, () => {
-            callback({status: 200, description: 'Part sikeresen megrendelve!'});
-        }, (err) => {
-            callback({status: 400, description: `Hiba a part rendelése közben: ${err}`});
-        })
+        if(part_id != undefined && part_qty != undefined){
+            partDAO.order(part_id, part_qty, () => {
+                callback({status: 200, description: 'Part sikeresen megrendelve!'});
+            }, (err) => {
+                callback({status: 400, description: `Hiba a part rendelése közben: ${err}`});
+            });
+        }
     }
 
     requirePart(part_id, part_qty, callback){
-        partDAO.require(part_id, part_qty, () => {
-            callback({status: 200, description: 'Part sikeresen kikérve a raktárból!'});
-        }, (err) => {
-            callback({status: 400, description: `Hiba a part rendelése közben: ${err}`});
-        });
+        if(part_id != undefined && part_qty != undefined){
+            partDAO.require(part_id, part_qty, () => {
+                callback({status: 200, description: 'Part sikeresen kikérve a raktárból!'});
+            }, (err) => {
+                callback({status: 400, description: `Hiba a part rendelése közben: ${err}`});
+            });
+        }
     }
 }
 
