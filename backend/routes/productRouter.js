@@ -10,6 +10,7 @@ router.get('/:product_id', productController.fetchOne);
 
 router.post('/', productController.createProduct);
 router.post('/store', productController.storeProduct);
+router.post('/sell', productController.sellProduct);
 
 router.put('/:product_id', productController.updateProduct);
 
