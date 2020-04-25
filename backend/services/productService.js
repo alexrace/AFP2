@@ -48,6 +48,18 @@ class productService{
             });
         }
     }
+
+    storeProduct(product_id, qty, callback){
+        if(product_id != undefined && qty != undefined){
+            productDAO.store(product_id, qty, (err) => {
+                if(err){
+                    callback({status: 400, description: `Hiba a product raktározása közben: ${err}`});
+                }
+            }, () => {
+                callback({status: 200, description: "Product sikeresen raktárba helyezve!"});
+            })
+        }
+    }
 }
 
 module.exports = new productService();
