@@ -12,6 +12,16 @@ exports.fetchOne = (req, res) => {
     });
 }
 
+exports.fetchDetails = (req, res) => {
+    partService.fetchDetails(req.params.part_id, (result) => {
+        if(result.status == 200){
+            res.status(200).json(result);
+        }else{
+            res.status(400).json(result);
+        }
+    })
+}
+
 exports.createPart = (req, res) => {
     partService.createPart(req.body, (result) => {
         if(result.status == 200){
