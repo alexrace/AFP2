@@ -41,3 +41,13 @@ exports.deleteProduct = (req, res) => {
         }
     });
 }
+
+exports.storeProduct = (req, res) => {
+    productService.storeProduct(req.body.product_id, req.body.qty, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    })
+}
