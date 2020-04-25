@@ -13,6 +13,16 @@ class partService{
         });
     }
 
+    fetchDetails(part_id, callback){
+        if(part_id != undefined){
+            partDAO.fetchDetails(part_id, (err) => {
+                callback({status: 400, description: `Hiba a part létrehozása közben: ${err}`});
+            }, (details) => {
+                callback({status: 200, description: 'Part részletes adatai sikeresen lekérdezve!', part_details: details});
+            });
+        }
+    }
+
     createPart(part, callback){
         if(part != undefined){
             partDAO.create(part, () => {
