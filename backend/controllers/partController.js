@@ -41,3 +41,13 @@ exports.deletePart = (req, res) => {
         }
     });
 }
+
+exports.orderPart = (req, res) => {
+    partService.orderPart(req.body.part_id, req.body.part_qty, (result) => {
+       if(result.status == 200){
+           res.status(200).json(result);
+       } else{
+           res.status(400).json(result);
+       }
+    });
+}
