@@ -9,6 +9,7 @@ router.get('/', productController.fetchAll);
 router.get('/:product_id', productController.fetchOne);
 
 router.post('/', productController.createProduct);
+router.post('/store', productController.storeProduct);
 
 router.put('/:product_id', productController.updateProduct);
 
