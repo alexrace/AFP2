@@ -65,14 +65,19 @@ class partDAO{
         this.connection.query("SELECT inv.inventory_id FROM inventory inv INNER JOIN sites s ON inv.site_id=s.site_id WHERE s.site_name='Local worker'", {}, (err, result) => {
             if(err) error(err.message);
             else{
-                let inv_id = result[0].inventory_id;
+                if(result.length > 0){
+                    let inv_id = result[0].inventory_id;
 
-                this.connection.query("INSERT INTO parts_inventory (inventory_id, part_id, qty, availability) VALUES(?,?,?,?)",[inv_id, part_id, part_qty,'available'], (err, result) => {
-                   if(err) error(err.message);
-                   else{
-                       success();
-                   }
-                });
+                    this.connection.query("INSERT INTO parts_inventory (inventory_id, part_id, qty, availability) VALUES(?,?,?,?)",[inv_id, part_id, part_qty,'available'], (err, result) => {
+                        if(err) error(err.message);
+                        else{
+                            success();
+                        }
+                    });
+                }
+                else{
+                    error('Nem található inventory!');
+                }
             }
         });
     }
