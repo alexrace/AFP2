@@ -9,6 +9,7 @@ router.get('/', partController.fetchAll);
 router.get('/:part_id', partController.fetchOne);
 
 router.post('/', partController.createPart);
+router.post('/order',partController.orderPart);
 
 router.put('/:part_id', partController.updatePart);
 
