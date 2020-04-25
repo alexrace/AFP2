@@ -52,6 +52,26 @@ class productDAO{
             }
         })
     }
+
+    store(product_id, qty, error, success){
+        this.connection.query("SELECT inv.inventory_id FROM inventory inv INNER JOIN sites s ON inv.site_id=s.site_id WHERE s.site_name='Assembly line'", {}, (err, result) => {
+            if(err) error(err.message);
+            else{
+                if(result.length > 0){
+                    let inv_id = result[0].inventory_id;
+                    this.connection.query("INSERT INTO products_inventory (inventory_id, product_id, qty, availability) VALUES(?,?,?,?)", [inv_id, product_id, qty,'available'], (err, result) => {
+                       if(err) error(err.message);
+                       else{
+                           success();
+                       }
+                    });
+
+                }else{
+                    error('Nem található inventory!');
+                }
+            }
+        });
+    }
 }
 
 module.exports = new productDAO();
