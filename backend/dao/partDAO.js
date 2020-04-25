@@ -76,6 +76,30 @@ class partDAO{
             }
         });
     }
+
+    require(part_id, part_qty, success, error){
+        this.connection.query("SELECT qty FROM parts_inventory WHERE part_id = ?", [part_id], (err, result) => {
+            if(err) error(err.message);
+            else{
+                if(result.length > 0){
+                    let stock_qty = result[0].qty;
+                    if(stock_qty < part_qty){
+                        error('Nincs raktáron a kért mennyiség!');
+                    }else{
+                        this.connection.query("UPDATE parts_inventory SET qty = ? WHERE part_id = ?", [stock_qty - part_qty, part_id], (err, result) => {
+                            if(err) error(err.message);
+                            else{
+                                success();
+                            }
+                        });
+                    }
+                }
+                else{
+                    error('A kért part nincs raktáron!');
+                }
+            }
+        })
+    }
 }
 
 module.exports = new partDAO();
