@@ -13,7 +13,7 @@ exports.fetchOne = (req, res) => {
 }
 
 exports.registerUser = (req, res) => {
-    userService.registerUser(req.body, (result) => {
+    userService.registerUser({user: req.body}, (result) => {
         if(result.status == 200){
             return res.status(200).json(result);
         }else{
@@ -43,7 +43,16 @@ exports.deleteUser = (req, res) => {
 }
 
 exports.loginUser = (req, res) => {
-    res.status(200).json({status: 200, description: "USER LOGIN"});
+    const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
+    const [username, password] = Buffer.from(b64auth, 'base64').toString().split(':');
+
+    userService.authenticateUser({username: username, password: password}, (result) => {
+        if(result.status == 200){
+            return res.status(200).json(result);
+        }else{
+            return res.status(400).json(result);
+        }
+    });
 }
 
 exports.logoutUser = (req, res) => {
