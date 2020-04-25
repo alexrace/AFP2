@@ -35,6 +35,19 @@ class partDAO{
         })
     }
 
+    fetchDetails(part_id, error, success){
+        this.connection.query("SELECT p.part_id, p.part_name, p.part_price, p.description, inv.inventory_id, inv.location FROM parts p INNER JOIN parts_inventory pi ON p.part_id = pi.part_id INNER JOIN inventory inv ON pi.inventory_id=inv.inventory_id WHERE p.part_id = ?", [part_id], (err, result) => {
+           if(err) error(err.message);
+           else{
+               if(result.length > 0){
+                   success(result);
+               }else{
+                   error('A kért part nincs raktáron!');
+               }
+           }
+        });
+    }
+
     update(part, success, error){
         this.connection.query("UPDATE parts SET ? WHERE part_id = ?", [part, part.part_id], (err, result) => {
             if(err)
