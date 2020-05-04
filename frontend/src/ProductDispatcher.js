@@ -14,21 +14,31 @@ class ProductDispatcher extends Dispatcher{
 const dispatcher = new ProductDispatcher();
 
 dispatcher.register((payload)=>{
+    if(payload.action.actionType==='PRODUCT_UPDATE'){
+        if(payload.action.payload.product_id!==''){
+            axios.put('/products/'+payload.action.payload.product_id,{
+            product_id : payload.action.payload.product_id,
+            product_name : payload.action.payload.product_name,
+            product_price : payload.action.payload.product_price,
+            product_qty : payload.action.payload.product_qty
+            }).then(resp=>{console.log(resp.data)}).catch(error => {console.log(error) });
+        }
+    }
     if(payload.action.actionType==='PRODUCT_DELETE'){
-        console.log('Deleted')
         axios.delete('/products/'+payload.action.payload.product_id).then(resp=>{
             console.log(resp.data)}).catch(error =>{console.log(error);
         });
-        
+        console.log('Deleted')
     }
     if(payload.action.actionType === 'PRODUCT_INSERT'){
-        console.log('Inserted');
+        
         axios.post('/products',{
             product_id : payload.action.payload.product_id,
             product_name : payload.action.payload.product_name,
             product_price : payload.action.payload.product_price,
             product_qty : payload.action.payload.product_qty
         }).then(resp=>{console.log(resp.data)}).catch(error => {console.log(error) });
+        console.log('Inserted');
     }
     if(payload.action.actionType === 'PRODUCT_SEARCH'){
         if(payload.action.payload.product_id !== ''){

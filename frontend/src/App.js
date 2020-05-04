@@ -6,6 +6,7 @@ import PartSearch from "./components/PartSearch";
 import PartSearchResult from "./components/PartSearchResult";
 import ProductInsert from "./components/ProductInsert";
 import ProductDelete from "./components/ProductDelete";
+import ProductUpdate from "./components/ProductUpdate";
 
 function App() {
   
@@ -30,6 +31,10 @@ function App() {
                   <div className="col-md-4">
                     <div>Termék törlés</div>
                     <div className="row"><ProductDelete/></div>
+                  </div>
+                  <div className="col-md-4">
+                    <div>Termék update</div>
+                    <div className="row"><ProductUpdate/></div>
                   </div>
               </div>
           </div>
