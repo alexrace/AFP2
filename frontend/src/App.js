@@ -4,6 +4,7 @@ import ProductSearch from "./components/ProductSearch";
 import ProductSearchResult from "./components/ProductSearchResult";
 import PartSearch from "./components/PartSearch";
 import PartSearchResult from "./components/PartSearchResult";
+import ProductInsert from "./components/ProductInsert";
 
 function App() {
   
@@ -21,7 +22,10 @@ function App() {
                     <div className="row"><PartSearch/></div>
                     <div className="row"><PartSearchResult/></div>
                   </div>
-               
+                  <div className="col-md-4">
+                    <div>Termék hozzáadás</div>
+                    <div className="row"><ProductInsert/></div>
+                  </div>
               </div>
           </div>
     
