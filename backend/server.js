@@ -17,10 +17,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/users', userRouter);
-app.use('/api/products', productRouter);
-app.use('/api/parts', partRouter);
-app.use('/api/inventory', inventoryRouter);
+app.use('/users', userRouter);
+app.use('/products', productRouter);
+app.use('/parts', partRouter);
+app.use('/inventory', inventoryRouter);
 
 app.listen(port, () => {
     console.log(`A szerver elindult a http://localhost:${port}/ címen!`);
