@@ -1,15 +1,14 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var userRouter = require('./routes/userRouter');
-var productRouter = require('./routes/productRouter');
-var partRouter = require('./routes/partRouter');
-var inventoryRouter = require('./routes/inventoryRouter');
+const userRouter = require('./routes/userRouter');
+const productRouter = require('./routes/productRouter');
+const partRouter = require('./routes/partRouter');
+const inventoryRouter = require('./routes/inventoryRouter');
 
-var app = express();
+const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(logger('dev'));
