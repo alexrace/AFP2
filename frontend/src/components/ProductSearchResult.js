@@ -23,6 +23,7 @@ class ProductSearchResult extends React.Component{
 
     render(){
         return(
+        this.state.products.length > 0 &&
            <table className="product_table">
                <thead>
                    <tr>
