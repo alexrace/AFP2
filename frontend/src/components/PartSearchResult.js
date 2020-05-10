@@ -23,6 +23,7 @@ class PartSearchResult extends React.Component{
 
     render(){
         return(
+            this.state.parts.length > 0 &&
            <table className="part_table">
                <thead>
                    <tr>
@@ -33,7 +34,7 @@ class PartSearchResult extends React.Component{
                    </tr>
                </thead>
                <tbody>
-                   {
+                   { 
                        this.state.parts.map((part)=>{
                             return(
                                 <tr key={part.part_id}>
