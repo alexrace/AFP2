@@ -3,7 +3,6 @@ import PartSearchActions from '../actions/PartSearchActions';
 import ProductSearchActions from '../actions/ProductSearchActions';
 import PartSearchResult from './PartSearchResult';
 import ProductSearchResult from './ProductSearchResult';
-import SearchResult from './SearchResult';
 
 const initialState = {
     part_id: "",
