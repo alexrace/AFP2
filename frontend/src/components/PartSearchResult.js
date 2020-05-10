@@ -24,30 +24,32 @@ class PartSearchResult extends React.Component{
     render(){
         return(
             this.state.parts.length > 0 &&
-           <table className="part_table">
-               <thead>
-                   <tr>
-                       <td>Id</td>
-                       <td>Name</td>
-                       <td>Price</td>
-                       <td>Piece</td>
-                   </tr>
-               </thead>
-               <tbody>
-                   { 
-                       this.state.parts.map((part)=>{
-                            return(
-                                <tr key={part.part_id}>
-                                    <td className="p-3">{part.part_id}</td>
-                                    <td>{part.part_name}</td>
-                                    <td>{part.part_price}</td>
-                                    <td className="p-3">{part.part_qty}</td>
-                                </tr>
-                            );
-                       })
-                   }
-               </tbody>
-           </table>
+                <div className="table-responsive">
+                    <table className="part_table table">
+                        <thead>
+                            <tr>
+                                <td>Id</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Piece</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            { 
+                                this.state.parts.map((part)=>{
+                                        return(
+                                            <tr key={part.part_id}>
+                                                <td className="p-3">{part.part_id}</td>
+                                                <td>{part.part_name}</td>
+                                                <td>{part.part_price}</td>
+                                                <td className="p-3">{part.part_qty}</td>
+                                            </tr>
+                                        );
+                                })
+                            }
+                        </tbody>
+                    </table>
+            </div>
         );
     }
 }
