@@ -24,30 +24,32 @@ class ProductSearchResult extends React.Component{
     render(){
         return(
         this.state.products.length > 0 &&
-           <table className="product_table">
-               <thead>
-                   <tr>
-                       <td>Id</td>
-                       <td>Name</td>
-                       <td>Price</td>
-                       <td>Piece</td>
-                   </tr>
-               </thead>
-               <tbody>
-                   {
-                       this.state.products.map((product)=>{
-                            return(
-                                <tr key={product.product_id}>
-                                    <td className="p-3">{product.product_id}</td>
-                                    <td>{product.product_name}</td>
-                                    <td>{product.product_price}</td>
-                                    <td className="p-3">{product.product_qty}</td>
-                                </tr>
-                            );
-                       })
-                   }
-               </tbody>
-           </table>
+            <div className="table-responsive">
+                <table className="product_table table">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Piece</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.products.map((product)=>{
+                                    return(
+                                        <tr key={product.product_id}>
+                                            <td className="p-3">{product.product_id}</td>
+                                            <td>{product.product_name}</td>
+                                            <td>{product.product_price}</td>
+                                            <td className="p-3">{product.product_qty}</td>
+                                        </tr>
+                                    );
+                            })
+                        }
+                    </tbody>
+                </table>
+           </div>
         );
     }
 }
