@@ -20,7 +20,7 @@ class Search extends React.Component{
         this.state = initialState;
     }
 
-    handleSubmit(e){
+    handleSubmit(){
         if(this.state.search_type == "part"){
             PartSearchActions.search(this.state.part_id, this.state.part_name);
         }
@@ -67,7 +67,7 @@ class Search extends React.Component{
                         this.setState(state);
                     }} />
 
-                    <button type="submit" className="btn btn-primary mt-2" onClick={(e) => this.handleSubmit(e)}>Keresés</button>
+                    <button type="submit" className="btn btn-primary mt-2" onClick={() => this.handleSubmit() }>Keresés</button>
                 </div>
 
                 <PartSearchResult />
