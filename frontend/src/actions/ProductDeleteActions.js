@@ -1,4 +1,4 @@
-import dispatcher from '../ProductDispatcher';
+import dispatcher from '../AppDispatcher';
 
 class ProductDeleteActions{
     

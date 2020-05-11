@@ -1,4 +1,4 @@
-import dispatcher from '../PartDispatcher';
+import dispatcher from '../AppDispatcher';
 
 class PartSearchActions{
     
@@ -8,7 +8,6 @@ class PartSearchActions{
             payload : {
                 part_id : part_id,
                 part_name : part_name
-                
             }
         });
     }
