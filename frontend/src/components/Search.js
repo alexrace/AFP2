@@ -65,7 +65,6 @@ class Search extends React.Component{
                             state.product_name = e.target.value;
                         }
                         this.setState(state);
-                        console.log(this.state);
                     }} />
 
                     <button type="submit" className="btn btn-primary mt-2" onClick={(e) => this.handleSubmit(e)}>Keresés</button>
