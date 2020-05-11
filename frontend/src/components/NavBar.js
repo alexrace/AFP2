@@ -35,6 +35,7 @@ class NavBar extends React.Component{
                                 </a>
                                 <div className="dropdown-menu" aria-labelledby="partDropdown">
                                     <Link className="dropdown-item" to="/parts/add">Alkatrész létrehozása</Link>
+                                    <Link className="dropdown-item" to="/parts/edit">Alkatrész szerkesztése</Link>
                                 </div>
                             </li>
                         </ul>
