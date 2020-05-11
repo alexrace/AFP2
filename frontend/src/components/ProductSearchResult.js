@@ -31,7 +31,7 @@ class ProductSearchResult extends React.Component{
                             <td>Id</td>
                             <td>Name</td>
                             <td>Price</td>
-                            <td>Piece</td>
+                            <td>Description</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +42,7 @@ class ProductSearchResult extends React.Component{
                                             <td className="p-3">{product.product_id}</td>
                                             <td>{product.product_name}</td>
                                             <td>{product.product_price}</td>
-                                            <td className="p-3">{product.product_qty}</td>
+                                            <td className="p-3">{product.description}</td>
                                         </tr>
                                     );
                             })
