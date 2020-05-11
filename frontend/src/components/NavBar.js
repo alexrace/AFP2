@@ -26,6 +26,7 @@ class NavBar extends React.Component{
                                 </a>
                                 <div className="dropdown-menu" aria-labelledby="productDropdown">
                                     <Link className="dropdown-item" to="/products/add">Termék létrehozása</Link>
+                                    <Link className="dropdown-item" to="/products/edit">Termék szerkesztése</Link>
                                 </div>
                             </li>
                             <li className="nav-item dropdown">
