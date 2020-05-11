@@ -16,6 +16,6 @@ class ProductStore extends Eventemitter{
     }
 }
 
-var store = new ProductStore();
+var productStore = new ProductStore();
 
-export default store;
+export default productStore;
