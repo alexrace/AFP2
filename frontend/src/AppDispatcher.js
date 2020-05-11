@@ -37,7 +37,6 @@ dispatcher.register((payload) => {
                 console.log('Part keresés ID alapján');
                  axios.get('/parts/'+payload.action.payload.part_id).then((resp)=>{
                      partStore._parts = resp.data;
-                     console.log(partStore);
                      partStore.emitChange();
                  });
              }
