@@ -2,6 +2,8 @@ import { Dispatcher } from "flux";
 import axios from 'axios';
 import partStore from './stores/PartStore';
 import productStore from './stores/ProductStore';
+import InventoryPartStore from './stores/InventoryPartStore';
+import InventoryProductStore from './stores/InventoryProductStore';
 
 class AppDispatcher extends Dispatcher{
     handleViewAction(action){
@@ -94,6 +96,18 @@ dispatcher.register((payload) => {
         case 'PART_DELETE':
             axios.delete('/parts/'+payload.action.payload.part_id).then(resp=>{
                 console.log("Part deleted: " + resp.data)}).catch(error =>{console.log(error);
+            });
+        break;
+        case 'INVENTORY_PART_SEARCH':
+            axios.get('/inventory/'+payload.action.payload.inventory_type+'/'+payload.action.payload.inventory_id).then(resp => {
+                InventoryPartStore._parts = resp.data.inventories;
+                InventoryPartStore.emitChange();
+            });
+        break;
+        case 'INVENTORY_PRODUCT_SEARCH':
+            axios.get('/inventory/'+payload.action.payload.inventory_type+'/'+payload.action.payload.inventory_id).then(resp => {
+                InventoryProductStore._products = resp.data.inventories;
+                InventoryProductStore.emitChange();
             });
         break;
         default:
