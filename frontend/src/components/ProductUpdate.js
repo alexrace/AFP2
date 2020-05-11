@@ -52,7 +52,7 @@ class ProductUpdate extends React.Component{
                             /></td>
                         </tr>
                         <tr>
-                            <td>Piece</td>
+                            <td>Description</td>
                             <td><input type={"text"}
                                         value={this.state.description}
                                         onChange={(e)=>{
