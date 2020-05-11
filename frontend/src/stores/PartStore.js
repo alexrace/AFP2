@@ -16,6 +16,6 @@ class PartStore extends Eventemitter{
     }
 }
 
-var store = new PartStore();
+var partStore = new PartStore();
 
-export default store;
+export default partStore;
