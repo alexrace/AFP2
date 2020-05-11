@@ -74,9 +74,31 @@ dispatcher.register((payload) => {
                 console.log("Product deleted: " + resp.data)}).catch(error =>{console.log(error);
             });
         break;
+        case 'PART_INSERT':
+            axios.post('/parts',{
+                part_id : payload.action.payload.part_id,
+                part_name : payload.action.payload.part_name,
+                part_price : payload.action.payload.part_price,
+                description : payload.action.payload.description
+            }).then(resp=>{console.log("Part inserted: " + resp.data)}).catch(error => {console.log(error) });
+        break;
+        case 'PART_UPDATE':
+            if(payload.action.payload.product_id !== ''){
+                axios.put('/parts/'+payload.action.payload.part_id,{
+                    part_id : payload.action.payload.part_id,
+                    part_name : payload.action.payload.part_name,
+                    part_price : payload.action.payload.part_price,
+                    description : payload.action.payload.description
+                }).then(resp=>{console.log("Part updated: " + resp.data)}).catch(error => {console.log(error) });
+            }
+        break;
+        case 'PART_DELETE':
+            axios.delete('/parts/'+payload.action.payload.part_id).then(resp=>{
+                console.log("Part deleted: " + resp.data)}).catch(error =>{console.log(error);
+            });
+        break;
         default:
             return;
-        break;
     }
 });
 
