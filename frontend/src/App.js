@@ -3,9 +3,9 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 import NavBar from "./components/NavBar";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Search from "./components/Search";
 import Inventory from "./components/Inventory";
@@ -18,19 +18,20 @@ import PartUpdate from './components/PartUpdate';
 function App() {
   
     return (
-        <Router>
-          <NavBar/>
-          <Switch>
-            <Route path="/search" exact component={Search} />
-            <Route path="/inventory" exact component={Inventory}/>
-            <Route path="/products/add" exact component={ProductInsert} />
-            <Route path="/products/edit" exact component={ProductUpdate} />
-            <Route path="/parts/add" exact component={PartInsert} />
-            <Route path="/parts/edit" exact component={PartUpdate} />
-
-            <Route component={Search} />
-          </Switch>
-        </Router>
+        <div>
+            <BrowserRouter>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={Search} />
+                    <Route path="/search" component={Search} />
+                    <Route path="/fetchInventory" component={Inventory} />
+                    <Route path="/insertProduct" component={ProductInsert} />
+                    <Route path="/editProduct" component={ProductUpdate} />
+                    <Route path="/insertPart" component={PartInsert} />
+                    <Route path="/editPart" component={PartUpdate} />
+                </Switch>
+            </BrowserRouter>
+        </div>
     );
   
 }
