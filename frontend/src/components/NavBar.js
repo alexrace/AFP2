@@ -20,6 +20,22 @@ class NavBar extends React.Component{
                             <li className="nav-item">
                                 <Link className="nav-link" to="/inventory">Raktár</Link>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="productDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Termékek
+                                </a>
+                                <div className="dropdown-menu" aria-labelledby="productDropdown">
+                                    <Link className="dropdown-item" to="/products/add">Termék létrehozása</Link>
+                                </div>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="partDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Alkatrész
+                                </a>
+                                <div className="dropdown-menu" aria-labelledby="partDropdown">
+                                    <Link className="dropdown-item" to="/parts/add">Alkatrész létrehozása</Link>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </nav>    
