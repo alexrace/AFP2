@@ -23,7 +23,6 @@ class InventoryPartSearchResult extends React.Component{
 
     render(){
         return(
-        this.state.parts.length > 0 &&
             <div className="table-responsive">
                 <h3 className="text-center">Alkatrészek</h3>
                 <table className="table">

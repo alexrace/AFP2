@@ -23,7 +23,6 @@ class InventoryProductSearchResult extends React.Component{
 
     render(){
         return(
-        this.state.products.length > 0 &&
             <div className="table-responsive">
                 <h3 className="text-center">Termékek</h3>
                 <table className="table">

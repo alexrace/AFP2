@@ -15,11 +15,11 @@ class PartSearchResult extends React.Component{
     }
 
     componentDidMount(){
-    PartStore.addChangeListener(this._onChange)
+        PartStore.addChangeListener(this._onChange)
     }
 
     componentWillUnmount(){
-    PartStore.removeChangeListener(this._onChange);
+        PartStore.removeChangeListener(this._onChange);
     }
 
     handleDelete(part_id){
@@ -28,7 +28,6 @@ class PartSearchResult extends React.Component{
 
     render(){
         return(
-            this.state.parts.length > 0 &&
                 <div className="table-responsive">
                     <table className="part_table table">
                         <thead>

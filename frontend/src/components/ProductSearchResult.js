@@ -20,6 +20,7 @@ class ProductSearchResult extends React.Component{
 
     componentWillUnmount(){
     ProductStore.removeChangeListener(this._onChange);
+    
     }
 
     handleDelete(product_id){
@@ -28,7 +29,6 @@ class ProductSearchResult extends React.Component{
 
     render(){
         return(
-        this.state.products.length > 0 &&
             <div className="table-responsive">
                 <table className="product_table table">
                     <thead>
