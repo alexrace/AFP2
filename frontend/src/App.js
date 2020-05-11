@@ -11,6 +11,7 @@ import Search from "./components/Search";
 import ProductInsert from './components/ProductInsert';
 import ProductUpdate from './components/ProductUpdate';
 import PartInsert from './components/PartInsert';
+import PartUpdate from './components/PartUpdate';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
             <Route path="/products/add" exact component={ProductInsert} />
             <Route path="/products/edit" exact component={ProductUpdate} />
             <Route path="/parts/add" exact component={PartInsert} />
+            <Route path="/parts/edit" exact component={PartUpdate} />
           </Switch>
         </Router>
     );
