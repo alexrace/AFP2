@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Search from "./components/Search";
 import ProductInsert from './components/ProductInsert';
+import PartInsert from './components/PartInsert';
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
             <Route path="/search" exact component={Search} />
             <Route path="/inventory" />
             <Route path="/products/add" exact component={ProductInsert} />
+            <Route path="/parts/add" exact component={PartInsert} />
           </Switch>
         </Router>
     );
