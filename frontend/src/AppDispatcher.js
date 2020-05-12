@@ -58,7 +58,7 @@ dispatcher.register((payload) => {
                 product_name : payload.action.payload.product_name,
                 product_price : payload.action.payload.product_price,
                 description : payload.action.payload.description
-            }).then(resp=>{console.log("Product inserted: " + resp.data)}).catch(error => {console.log(error) });
+            }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'PRODUCT_UPDATE':
             if(payload.action.payload.product_id !== ''){
@@ -67,13 +67,11 @@ dispatcher.register((payload) => {
                 product_name : payload.action.payload.product_name,
                 product_price : payload.action.payload.product_price,
                 description : payload.action.payload.description
-                }).then(resp=>{console.log("Product updated: " + resp.data)}).catch(error => {console.log(error) });
+                }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
             }
         break;
         case 'PRODUCT_DELETE':
-            axios.delete('/products/'+payload.action.payload.product_id).then(resp=>{
-                console.log("Product deleted: " + resp.data)}).catch(error =>{console.log(error);
-            });
+            axios.delete('/products/'+payload.action.payload.product_id).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'PART_INSERT':
             axios.post('/parts',{
@@ -81,7 +79,7 @@ dispatcher.register((payload) => {
                 part_name : payload.action.payload.part_name,
                 part_price : payload.action.payload.part_price,
                 description : payload.action.payload.description
-            }).then(resp=>{console.log("Part inserted: " + resp.data)}).catch(error => {console.log(error) });
+            }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'PART_UPDATE':
             if(payload.action.payload.product_id !== ''){
@@ -90,13 +88,11 @@ dispatcher.register((payload) => {
                     part_name : payload.action.payload.part_name,
                     part_price : payload.action.payload.part_price,
                     description : payload.action.payload.description
-                }).then(resp=>{console.log("Part updated: " + resp.data)}).catch(error => {console.log(error) });
+                }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
             }
         break;
         case 'PART_DELETE':
-            axios.delete('/parts/'+payload.action.payload.part_id).then(resp=>{
-                console.log("Part deleted: " + resp.data)}).catch(error =>{console.log(error);
-            });
+            axios.delete('/parts/'+payload.action.payload.part_id).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'INVENTORY_PART_SEARCH':
             axios.get('/inventory/'+payload.action.payload.inventory_type+'/'+payload.action.payload.inventory_id).then(resp => {
@@ -114,13 +110,13 @@ dispatcher.register((payload) => {
             axios.post('/parts/order',{
                 part_id : payload.action.payload.part_id,
                 part_qty : payload.action.payload.part_qty
-            }).then(resp=>{console.log("Part order: " + resp.data)}).catch(error => {console.log(error) });
+            }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'PRODUCT_SELL':
             axios.post('products/sell',{
                 product_id : payload.action.payload.product_id,
                 qty : payload.action.payload.qty
-            }).then(resp=>{console.log("Product sell: " + resp.data)}).catch(error => {console.log(error) });
+            }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         default:
             return;

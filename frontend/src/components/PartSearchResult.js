@@ -53,7 +53,7 @@ class PartSearchResult extends React.Component{
                                                 <td>{part.part_name}</td>
                                                 <td>{part.part_price}</td>
                                                 <td className="p-3">{part.description}</td>
-                                                <td> <input type='number' onChange={(e)=>{
+                                                <td> <input type='number' class="form-control" placeholder="Mennyiség" onChange={(e)=>{
                                                     let state = this.state;
                                                     state.part_qty = e.target.value;
                                                     this.setState(state);

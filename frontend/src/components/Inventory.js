@@ -45,17 +45,6 @@ class Inventory extends React.Component{
                                     </select></td>
                             </tr>
                             <tr>
-                                <td>ID</td>
-                                <td><select className="form-control" name={"inventoryID"} onChange={(e) => {
-                                    let state = this.state;
-                                    state.inventoryID = e.target.value;
-                                    this.setState(state);
-                                }} value={this.state.inventoryID}>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
                                 <td 
                                 colSpan={2}>
                                     <button className="btn btn-primary" onClick={() => { this.handleSubmit() }}>Lekérdez</button>

@@ -7,7 +7,7 @@ class ProductSearchResult extends React.Component{
 
     constructor(){
         super();
-        this.state= {products : [], qty : 0};
+        this.state= {products : []};
         this._onChange = this._onChange.bind(this);
     }
 
@@ -27,11 +27,6 @@ class ProductSearchResult extends React.Component{
     handleDelete(product_id){
         ProductDeleteActions.delete(product_id);
     }
-
-    handleSell(product_id,qty){
-        ProductSearchActions.sell(product_id,qty);
-    }
-
 
     render(){
         return(
@@ -55,14 +50,7 @@ class ProductSearchResult extends React.Component{
                                             <td>{product.product_name}</td>
                                             <td>{product.product_price}</td>
                                             <td className="p-3">{product.description}</td>
-                                            <td>
-                                            <input type='number' onChange={(e)=>{
-                                                    let state = this.state;
-                                                    state.qty = e.target.value;
-                                                    this.setState(state);
-                                                }}></input>
-                                             <button className="btn btn-info btn-sm" onClick={() => this.handleSell(product.product_id,this.state.qty)}>Eladás</button>
-                                             <button className="btn btn-danger btn-sm" onClick={() => this.handleDelete(product.product_id)}>Törlés</button></td>
+                                            <td><button className="btn btn-danger btn-sm" onClick={() => this.handleDelete(product.product_id)}>Törlés</button></td>
                                         </tr>
                                     );
                             })
