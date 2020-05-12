@@ -110,6 +110,18 @@ dispatcher.register((payload) => {
                 InventoryProductStore.emitChange();
             });
         break;
+        case 'PART_REQUIRE':
+            axios.post('/parts/order',{
+                part_id : payload.action.payload.part_id,
+                part_qty : payload.action.payload.part_qty
+            }).then(resp=>{console.log("Part order: " + resp.data)}).catch(error => {console.log(error) });
+        break;
+        case 'PRODUCT_SELL':
+            axios.post('products/sell',{
+                product_id : payload.action.payload.product_id,
+                qty : payload.action.payload.qty
+            }).then(resp=>{console.log("Product sell: " + resp.data)}).catch(error => {console.log(error) });
+        break;
         default:
             return;
     }

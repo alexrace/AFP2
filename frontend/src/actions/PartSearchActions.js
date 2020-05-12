@@ -11,6 +11,15 @@ class PartSearchActions{
             }
         });
     }
+    require(part_id, part_qty){
+        dispatcher.handleViewAction({
+            actionType : 'PART_REQUIRE',
+            payload : {
+                part_id : part_id,
+                part_qty: part_qty
+            }
+        });
+    }
 }
 
 export default new PartSearchActions();

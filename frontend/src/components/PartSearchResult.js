@@ -1,12 +1,13 @@
 import React from 'react';
 import PartStore from '../stores/PartStore';
 import PartDeleteActions from '../actions/PartDeleteActions';
+import PartSearchActions from '../actions/PartSearchActions';
 
 class PartSearchResult extends React.Component{
 
     constructor(){
         super();
-        this.state= {parts : []};
+        this.state= {parts : [],part_qty : 0};
         this._onChange = this._onChange.bind(this);
     }
 
@@ -24,6 +25,10 @@ class PartSearchResult extends React.Component{
 
     handleDelete(part_id){
         PartDeleteActions.delete(part_id);
+    }
+    
+    handleOrder(part_id,part_qty){
+        PartSearchActions.require(part_id,part_qty);
     }
 
     render(){
@@ -48,7 +53,12 @@ class PartSearchResult extends React.Component{
                                                 <td>{part.part_name}</td>
                                                 <td>{part.part_price}</td>
                                                 <td className="p-3">{part.description}</td>
-                                                <td><button className="btn btn-sm btn-danger" onClick={() => this.handleDelete(part.part_id)}>Törlés</button></td>
+                                                <td> <input type='number' onChange={(e)=>{
+                                                    let state = this.state;
+                                                    state.part_qty = e.target.value;
+                                                    this.setState(state);
+                                                }}></input> <button className="btn btn-sm btn-info" onClick={() => this.handleOrder(part.part_id,this.state.part_qty)}>Rendelés</button>
+                                                    <button className="btn btn-sm btn-danger" onClick={() => this.handleDelete(part.part_id)}>Törlés</button></td>
                                             </tr>
                                         );
                                 })
