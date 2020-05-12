@@ -22,6 +22,10 @@ app.use('/products', productRouter);
 app.use('/parts', partRouter);
 app.use('/inventory', inventoryRouter);
 
+app.get('*', (req, res) => {                       
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));                               
+});
+
 app.listen(port, () => {
     console.log(`A szerver elindult a http://localhost:${port}/ címen!`);
 });
