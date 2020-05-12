@@ -75,6 +75,9 @@ class partDAO{
     }
 
     order(part_id, part_qty, success, error){
+        if(part_qty <= 0){
+            error('Hibás mennyiség!');
+        }
         this.connection.query("SELECT inv.inventory_id FROM inventory inv INNER JOIN sites s ON inv.site_id=s.site_id WHERE s.site_name='Local worker'", {}, (err, result) => {
             if(err) error(err.message);
             else{
