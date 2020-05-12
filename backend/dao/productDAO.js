@@ -79,28 +79,32 @@ class productDAO{
            else{
                if(result.length > 0){
                    let stock_qty = result[0].qty;
+                   if(qty <= 0){
+                       error('Hibás mennyiség!');
+                   }else{
                    if(stock_qty < qty){
                        error('Nincs raktáron a kért mennyiség!');
-                   }else{
-                       this.connection.query("UPDATE products_inventory SET qty = ? WHERE product_id = ?", [stock_qty-qty, product_id], (err, result) => {
-                          if(err) error(err.message);
-                          else{
-                              this.connection.query("SELECT product_price FROM products WHERE product_id = ?", [product_id], (err, result) => {
-                                  if(err) error(err.message);
-                                  else{
-                                      if(result.length > 0){
-                                          this.connection.query("INSERT INTO receipt (product_id, qty, total_price, created_at) VALUES(?,?,?,?)", [product_id, qty, qty*result[0].product_price, new Date()], (err, result) => {
-                                              if(err) error(err.message);
-                                              else{
-                                                  success();
-                                              }
-                                          });
-                                      }
-                                  }
-                              });
-                          }
-                       });
-                   }
+                        }else{
+                            this.connection.query("UPDATE products_inventory SET qty = ? WHERE product_id = ?", [stock_qty-qty, product_id], (err, result) => {
+                                if(err) error(err.message);
+                                else{
+                                    this.connection.query("SELECT product_price FROM products WHERE product_id = ?", [product_id], (err, result) => {
+                                        if(err) error(err.message);
+                                        else{
+                                            if(result.length > 0){
+                                                this.connection.query("INSERT INTO receipt (product_id, qty, total_price, created_at) VALUES(?,?,?,?)", [product_id, qty, qty*result[0].product_price, new Date()], (err, result) => {
+                                                    if(err) error(err.message);
+                                                    else{
+                                                        success();
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }
                }else{
                    error('A product nincs raktáron!');
                }
