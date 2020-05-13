@@ -11,6 +11,16 @@ class InventoryPartSearchActions{
             }
         });
     }
+
+    require(part_id, part_qty){
+        dispatcher.handleViewAction({
+            actionType: 'INVENTORY_PART_REQUIRE',
+            payload: {
+                part_id: part_id,
+                part_qty: part_qty
+            }
+        });
+    }
 }
 
 export default new InventoryPartSearchActions();

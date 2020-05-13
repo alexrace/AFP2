@@ -119,7 +119,7 @@ dispatcher.register((payload) => {
             }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
         break;
         case 'INVENTORY_PART_REQUIRE':
-            axios.post('part/require', {
+            axios.post('parts/require', {
                 part_id: payload.action.payload.part_id,
                 part_qty: payload.action.payload.part_qty
             }).then(resp=>{alert(resp.data.description)}).catch(error => {alert(error.response.data.description) });
